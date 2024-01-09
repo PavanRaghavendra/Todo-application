@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 # Todo-application
-=======
 This project a simple Todo application
 It has following features.
 
@@ -9,4 +8,3 @@ It has following features.
   -User can create a todo.
   -User can see their existing todos
   -User can mark a todo as done
->>>>>>> master

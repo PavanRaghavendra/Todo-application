@@ -8,7 +8,7 @@ Todo
 */
 const mongoose=require("mongoose");
 //mongo url connect.
-mongoose.connect("mongodb+srv://johnwick:oJ4g7oElkNQYlg3a@cluster0.keix9jl.mongodb.net/todos");
+mongoose.connect("");
 
 const UserSchema= new mongoose.Schema({
     UserName:String,
