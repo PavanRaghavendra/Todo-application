@@ -42,31 +42,20 @@ router.get("/todos",async (req,res)=>
         }
     )
 });
-router.get("/completed",async (req,res)=>
-{
-    const updatepayload=req.body;
-    const parsepayload=updateTodo.safeParse(updatepayload);
-    if(!parsepayload.success)
-    {
-        res.status(404).send(
-            {
-                msg:"you send a wrong input!.."
-            }
-        )
+router.get("/completed", async (req, res) => {
+    const updatePayload = req.body;
+    const parsePayload = updateTodo.safeParse(updatePayload);
+    if (!parsePayload.success) {
+        res.status(404).send({
+            msg: "You sent a wrong input!.."
+        });
         return;
     }
-    await todo.update(
-    {
-        _id:req.body.id
-    },
-    {
-        completed:true
-    }
-    )
-    res.json(
-        {
-            msg:"todo mark as completed"
-        }
-    )
+    const todoId = req.body.id;
+        await todo.updateOne({ _id: todoId }, { completed: true });
+
+        res.json({
+            msg: "Todo marked as completed"
+        });
 });
 module.exports=router

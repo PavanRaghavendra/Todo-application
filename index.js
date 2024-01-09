@@ -3,6 +3,7 @@ const app=express();
 const bodyParser=require('body-parser');
 const userRouter=require("./routes");
 const todoRouter=require("./todos");
+const cors=require("cors")
 app.use(express.json());
 app.use(cors());
 

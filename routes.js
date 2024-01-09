@@ -8,16 +8,16 @@ const app=express();
 const cors=require("cors");
 app.use(cors());
 const secretkey="12345"
-router.post('/signup',UserMiddleware,async (req,res)=>
+router.post('/signup',async (req,res)=>
 {
     const {UserName,Password}=req.body;
-    const userExsits=await user.findOne({userName});
+    const userExsits=await user.findOne({UserName});
     if(userExsits)
     {
         return res.status(404).json({msg:"username already in use"});
     }
     await user.create({UserName,Password});
-    return res.status(200).josn({msg:"User Created Sucessfully"});
+    return res.status(200).json({msg:"User Created Sucessfully"});
 })
 router.post("/signin",(req,res)=>
 {
@@ -27,7 +27,7 @@ router.post("/signin",(req,res)=>
     {
         return res.status(404).send("Worng username/password");
     }
-    const token=jwt.sign({data:{id:userExsists_id}},secretkey);
+    const token=jwt.sign({UserName},secretkey);
     return res.status(200).json({token});
 })
 module.exports=router
